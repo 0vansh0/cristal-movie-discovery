@@ -1,9 +1,9 @@
 import { lazy, Suspense, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import Navbar from "./components/Layout/Navbar";
-import Sidebar from "./components/Layout/Sidebar";
-import Footer from "./components/Layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import Sidebar from "./components/layout/Sidebar";
+import Footer from "./components/layout/Footer";
 import ProtectedRoute from "./auth/ProtectedRoute";
 
 /* =========================================================
