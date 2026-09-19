@@ -1,0 +1,1047 @@
+/* =========================================================
+   CRISTAL — MOVIE CARD
+   Premium Cinematic / Glass / 3D / Trailer Preview
+   ========================================================= */
+
+.movie-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  position: relative;
+  min-width: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  isolation: isolate;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+
+  overflow: visible;
+}
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.movie-card:hover {
+  border-color: rgba(255, 70, 85, 0.35);
+
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.48),
+    0 0 35px rgba(255, 70, 85, 0.08);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(255, 255, 255, 0.025)
+    );
+}
+
+/* =========================================================
+   CURSOR SPOTLIGHT
+   ========================================================= */
+
+.movie-card::before {
+  position: absolute;
+  inset: 0;
+
+  z-index: 20;
+
+  pointer-events: none;
+
+  border-radius: inherit;
+
+  background:
+    radial-gradient(
+      190px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.12),
+      transparent 68%
+    );
+
+  opacity: 0;
+
+  content: "";
+
+  transition: opacity 0.25s ease;
+}
+
+.movie-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================================================
+   POSTER WRAPPER
+   ========================================================= */
+
+.movie-card-poster {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 2 / 3;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181b21,
+      #0b0d11
+    );
+
+  text-decoration: none;
+
+  transform: translateZ(12px);
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.movie-card-poster img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  opacity: 0;
+
+  transform: scale(1);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.75s cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    );
+
+  will-change: transform, opacity;
+}
+
+.movie-card-poster img.movie-poster-loaded {
+  opacity: 1;
+}
+
+/* Poster zoom */
+
+.movie-card:hover
+.movie-card-poster
+img.movie-poster-loaded {
+  transform: scale(1.055);
+}
+
+/* =========================================================
+   TRAILER VIDEO
+   ========================================================= */
+
+.movie-card-trailer {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transform: scale(1.035);
+
+  transition:
+    opacity 0.55s ease,
+    transform 0.8s cubic-bezier(
+      0.2,
+      0.7,
+      0.2,
+      1
+    );
+
+  background: #090a0d;
+}
+
+.movie-card.trailer-active
+.movie-card-trailer {
+  opacity: 1;
+
+  transform: scale(1);
+}
+
+/* =========================================================
+   IMAGE / VIDEO GRADIENT
+   ========================================================= */
+
+.movie-card-gradient {
+  position: absolute;
+  inset: 0;
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.04) 20%,
+      rgba(0, 0, 0, 0.10) 48%,
+      rgba(0, 0, 0, 0.84) 100%
+    );
+
+  opacity: 0.95;
+}
+
+/* =========================================================
+   CINEMATIC EDGE GLOW
+   ========================================================= */
+
+.movie-card-poster::after {
+  position: absolute;
+  inset: 0;
+
+  z-index: 15;
+
+  pointer-events: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: inherit;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+  content: "";
+}
+
+.movie-card:hover
+.movie-card-poster::after {
+  border-color:
+    rgba(255, 255, 255, 0.13);
+
+  box-shadow:
+    inset 0 0 35px rgba(255, 70, 85, 0.05);
+}
+
+/* =========================================================
+   SKELETON
+   ========================================================= */
+
+.movie-card-skeleton {
+  position: absolute;
+  inset: 0;
+
+  z-index: 8;
+
+  background:
+    linear-gradient(
+      110deg,
+      #101319 25%,
+      #1a1e25 38%,
+      #101319 55%
+    );
+
+  background-size: 220% 100%;
+
+  animation:
+    movieSkeleton 1.4s ease infinite;
+}
+
+@keyframes movieSkeleton {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* =========================================================
+   TOP META
+   ========================================================= */
+
+.movie-card-top-meta {
+  position: absolute;
+
+  top: 10px;
+  left: 10px;
+  right: 10px;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   RATING
+   ========================================================= */
+
+.movie-rating {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  min-height: 25px;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  border-radius: 999px;
+
+  background:
+    rgba(5, 7, 10, 0.66);
+
+  color: #fff;
+
+  font-size: 9px;
+
+  font-weight: 850;
+
+  letter-spacing: 0.01em;
+
+  backdrop-filter: blur(14px);
+
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.07),
+    0 5px 15px
+      rgba(0, 0, 0, 0.25);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.movie-rating svg {
+  color: #ffc542;
+
+  font-size: 8px;
+}
+
+.movie-card:hover
+.movie-rating {
+  border-color:
+    rgba(255, 197, 66, 0.34);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.09),
+    0 0 18px
+      rgba(255, 197, 66, 0.08);
+}
+
+/* =========================================================
+   MEDIA TYPE
+   ========================================================= */
+
+.movie-media-type {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 24px;
+
+  padding:
+    4px
+    7px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.11);
+
+  border-radius: 999px;
+
+  background:
+    rgba(5, 7, 10, 0.58);
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  font-size: 7px;
+
+  font-weight: 850;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* =========================================================
+   YEAR
+   Only one year — inside poster
+   ========================================================= */
+
+.movie-year {
+  position: absolute;
+
+  left: 10px;
+  bottom: 10px;
+
+  z-index: 10;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.11);
+
+  border-radius: 7px;
+
+  background:
+    rgba(5, 7, 10, 0.58);
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  font-size: 8px;
+
+  font-weight: 750;
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* =========================================================
+   HOVER OVERLAY
+   ========================================================= */
+
+.movie-hover-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 12;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.03),
+      rgba(5, 7, 10, 0.68)
+    );
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.3s ease,
+    backdrop-filter 0.3s ease;
+}
+
+.movie-hover-overlay.is-visible {
+  opacity: 1;
+
+  backdrop-filter: blur(2px);
+
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* =========================================================
+   PLAY BUTTON
+   ========================================================= */
+
+.movie-play {
+  display: grid;
+
+  width: 50px;
+  height: 50px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.28);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  color: #111216;
+
+  font-size: 14px;
+
+  box-shadow:
+    0 10px 35px
+      rgba(0, 0, 0, 0.38);
+
+  transform:
+    translateY(10px)
+    scale(0.82);
+
+  transition:
+    transform 0.35s
+      cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.movie-hover-overlay.is-visible
+.movie-play {
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.movie-play:hover {
+  background: #fff;
+
+  transform:
+    translateY(-2px)
+    scale(1.06);
+
+  box-shadow:
+    0 14px 40px
+      rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================================
+   PREVIEW LABEL
+   ========================================================= */
+
+.movie-preview-label {
+  padding:
+    5px
+    10px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 0, 0, 0.5);
+
+  color:
+    rgba(255, 255, 255, 0.9);
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.07em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateY(6px);
+
+  transition:
+    opacity 0.25s ease 0.05s,
+    transform 0.25s ease 0.05s;
+}
+
+.movie-hover-overlay.is-visible
+.movie-preview-label {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================================================
+   TRAILER INDICATOR
+   ========================================================= */
+
+.movie-trailer-indicator {
+  position: absolute;
+
+  right: 10px;
+  bottom: 10px;
+
+  z-index: 14;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding:
+    5px
+    8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 0, 0, 0.55);
+
+  color:
+    rgba(255, 255, 255, 0.8);
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  transform: translateY(5px);
+
+  pointer-events: none;
+
+  backdrop-filter: blur(10px);
+
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.movie-card.trailer-active
+.movie-trailer-indicator {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.movie-trailer-indicator::before {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #ff4655;
+
+  box-shadow:
+    0 0 8px
+      rgba(255, 70, 85, 0.8);
+
+  content: "";
+}
+
+/* =========================================================
+   CARD INFO
+   ========================================================= */
+
+.movie-card-info {
+  display: grid;
+
+  gap: 7px;
+
+  min-width: 0;
+
+  padding:
+    11px
+    4px
+    9px;
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.movie-title {
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #f2f3f5;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  line-height: 1.35;
+
+  text-decoration: none;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
+}
+
+.movie-title:hover {
+  color: #fff;
+}
+
+/* =========================================================
+   BOTTOM ROW
+   ========================================================= */
+
+.movie-card-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  min-height: 26px;
+}
+
+/*
+  Year removed from bottom row intentionally.
+  This prevents the duplicate "2026" bug.
+*/
+
+.movie-card-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+/* =========================================================
+   ACTION BUTTON
+   ========================================================= */
+
+.card-icon {
+  display: grid;
+
+  width: 27px;
+  height: 27px;
+
+  flex: 0 0 27px;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color: #8d929c;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card-icon:hover {
+  border-color:
+    rgba(255, 70, 85, 0.4);
+
+  background:
+    rgba(255, 70, 85, 0.1);
+
+  color: #ff5968;
+
+  transform: translateY(-1px);
+}
+
+.card-icon:active {
+  transform: scale(0.92);
+}
+
+.card-icon.is-active {
+  border-color:
+    rgba(255, 70, 85, 0.34);
+
+  background:
+    rgba(255, 70, 85, 0.1);
+
+  color: #ff5968;
+}
+
+.card-icon svg {
+  font-size: 10px;
+}
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+.movie-card-poster:focus-visible,
+.movie-title:focus-visible,
+.card-icon:focus-visible {
+  outline:
+    2px solid
+    #ff4655;
+
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .movie-card {
+    border-radius: 14px;
+  }
+
+  .movie-card-poster {
+    border-radius: 13px;
+  }
+
+  .movie-card-top-meta {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .movie-year {
+    left: 8px;
+    bottom: 8px;
+  }
+
+  .movie-card-info {
+    padding:
+      9px
+      3px
+      8px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+  .movie-card {
+    border-radius: 12px;
+
+    transform: none !important;
+  }
+
+  .movie-card-poster {
+    border-radius: 11px;
+
+    transform: none;
+  }
+
+  .movie-rating {
+    min-height: 22px;
+
+    padding:
+      4px
+      6px;
+
+    font-size: 8px;
+  }
+
+  .movie-rating svg {
+    font-size: 7px;
+  }
+
+  .movie-media-type {
+    min-height: 21px;
+
+    padding:
+      3px
+      6px;
+
+    font-size: 6px;
+  }
+
+  .movie-year {
+    left: 7px;
+    bottom: 7px;
+
+    padding:
+      3px
+      6px;
+
+    font-size: 7px;
+  }
+
+  .movie-card-info {
+    padding:
+      8px
+      2px
+      7px;
+  }
+
+  .movie-title {
+    font-size: 10px;
+
+    line-height: 1.35;
+  }
+
+  .movie-play {
+    width: 42px;
+    height: 42px;
+
+    font-size: 12px;
+  }
+
+  .card-icon {
+    width: 24px;
+    height: 24px;
+
+    flex-basis: 24px;
+  }
+
+  .movie-trailer-indicator {
+    right: 7px;
+    bottom: 7px;
+
+    padding:
+      4px
+      6px;
+
+    font-size: 6px;
+  }
+}
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+  .movie-card::before {
+    display: none;
+  }
+
+  .movie-card:hover {
+    transform: none !important;
+
+    box-shadow: none;
+
+    border-color:
+      rgba(255, 255, 255, 0.07);
+  }
+
+  .movie-card:hover
+  .movie-card-poster
+  img.movie-poster-loaded {
+    transform: none;
+  }
+
+  .movie-hover-overlay {
+    display: none;
+  }
+
+  .movie-trailer-indicator {
+    display: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .movie-card,
+  .movie-card *,
+  .movie-card *::before,
+  .movie-card *::after {
+    animation: none !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+  .movie-card:hover
+  .movie-card-poster
+  img {
+    transform: none;
+  }
+
+  .movie-card-trailer {
+    transition: none;
+  }
+}
+.movie-upcoming-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+  padding: 5px 9px;
+
+  border: 1px solid rgba(255, 70, 85, .35);
+  border-radius: 999px;
+
+  background: rgba(255, 70, 85, .12);
+  color: #ff7b86;
+
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .08em;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 18px rgba(255, 70, 85, .08);
+}
+
+.movie-card:hover .movie-upcoming-badge {
+  border-color: rgba(255, 70, 85, .6);
+  background: rgba(255, 70, 85, .18);
+}

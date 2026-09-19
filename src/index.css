@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "./styles/theme.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 20px; }
+
+.glass {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  backdrop-filter: blur(25px);
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, .68);
+  border-color: var(--border);
+}
+
+/* =========================================================
+   SMOOTH PAGE TRANSITIONS
+========================================================= */
+
+main {
+  animation: pageTransitionIn 0.5s ease-out both;
+}
+
+@keyframes pageTransitionIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll for sections */
+section, article {
+  animation: elementFadeIn 0.5s ease-out both;
+}
+
+@keyframes elementFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Page container transition */
+.cristal-page,
+.anime-page,
+.tv-page,
+.search-page,
+.movie-details,
+.explore-page,
+.trending-page,
+.favorites-page,
+.watchlist-page,
+.profile-page,
+.settings-page,
+.notifications-page,
+.ai-page,
+.genres-page {
+  animation: pageSlideIn 0.4s ease-out both;
+}
+
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card entrance animations */
+.anime-card,
+.movie-card,
+.tv-card {
+  animation: cardFadeIn 0.3s ease-out both;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Staggered entrance for grid items */
+.anime-grid .anime-card:nth-child(1) { animation-delay: 0.05s; }
+.anime-grid .anime-card:nth-child(2) { animation-delay: 0.1s; }
+.anime-grid .anime-card:nth-child(3) { animation-delay: 0.15s; }
+.anime-grid .anime-card:nth-child(4) { animation-delay: 0.2s; }
+.anime-grid .anime-card:nth-child(5) { animation-delay: 0.25s; }
+.anime-grid .anime-card:nth-child(6) { animation-delay: 0.3s; }
+.anime-grid .anime-card:nth-child(n+7) { animation-delay: 0.35s; }
+
+/* Modal transitions */
+.modal-overlay,
+.dialog-overlay {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+.modal-content,
+.dialog-content {
+  animation: modalSlideIn 0.3s ease-out both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+

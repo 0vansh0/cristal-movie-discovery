@@ -1,0 +1,946 @@
+/* =========================================================
+   CRISTAL — PERSON DETAILS PAGE
+   Matches the class names actually rendered by
+   PersonDetailsPage.jsx (this file previously had a stale
+   set of class names, which is why the "Known for" /
+   filmography grids rendered unstyled).
+========================================================= */
+
+.person-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(255, 70, 78, 0.08),
+      transparent 30%
+    ),
+    #07080b;
+  color: #fff;
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* =========================================================
+   LOADING / ERROR STATE
+========================================================= */
+
+.person-page-state {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #07080b;
+  color: #fff;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.person-page-state h2 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.person-page-state p {
+  color: #8e9099;
+  max-width: 420px;
+}
+
+.person-page-state button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #ff4655;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.person-page-state button:hover {
+  background: #ff5f6c;
+  transform: translateY(-2px);
+}
+
+.person-spinner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: #ff4655;
+  animation: personSpin 0.8s linear infinite;
+}
+
+@keyframes personSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.person-hero {
+  position: relative;
+  min-height: 610px;
+  overflow: hidden;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.person-backdrop {
+  position: absolute;
+  inset: -30px;
+  z-index: -3;
+
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+
+  filter: blur(24px) saturate(0.9);
+  transform: scale(1.08);
+  opacity: 0.4;
+}
+
+.person-backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background:
+    linear-gradient(
+      90deg,
+      #07080b 0%,
+      rgba(7, 8, 11, 0.9) 32%,
+      rgba(7, 8, 11, 0.68) 60%,
+      #07080b 100%
+    ),
+    linear-gradient(
+      0deg,
+      #07080b 0%,
+      transparent 45%
+    );
+}
+
+.person-hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1250px;
+  margin: auto;
+  padding: 110px 28px 80px;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.person-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 45px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+
+  color: white;
+  cursor: pointer;
+
+  backdrop-filter: blur(14px);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.person-back-button:hover {
+  background: rgba(255, 70, 85, 0.14);
+  border-color: rgba(255, 70, 85, 0.4);
+  transform: translateX(-3px);
+}
+
+/* =========================================================
+   HERO GRID
+========================================================= */
+
+.person-hero-grid {
+  display: grid;
+
+  grid-template-columns:
+    260px
+    minmax(0, 1fr);
+
+  gap: 50px;
+
+  align-items: start;
+}
+
+.person-profile-wrapper {
+  width: 260px;
+
+  aspect-ratio: 2 / 3;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #101319;
+
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.5);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.person-profile-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 70, 85, 0.1);
+}
+
+.person-profile-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* =========================================================
+   HERO INFO
+========================================================= */
+
+.person-info {
+  min-width: 0;
+}
+
+.person-kicker {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #ff7b86;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.person-info h1 {
+  margin: 0;
+
+  color: #fff;
+
+  font-size: clamp(38px, 5.5vw, 68px);
+
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+
+  text-wrap: balance;
+}
+
+.person-profession {
+  margin: 10px 0 0;
+
+  color: #9b9da5;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.person-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px 18px;
+
+  margin-top: 18px;
+
+  color: #9b9da5;
+  font-size: 13px;
+}
+
+.person-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.person-meta svg {
+  color: #ff4655;
+  font-size: 12px;
+}
+
+.person-biography {
+  max-width: 720px;
+  margin: 22px 0 0;
+
+  color: #b3b5bd;
+  font-size: 14px;
+  line-height: 1.7;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.person-stats {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 34px;
+}
+
+.person-stats > div {
+  min-width: 130px;
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  column-gap: 10px;
+  row-gap: 3px;
+
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+
+  backdrop-filter: blur(12px);
+
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.person-stats > div:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 70, 85, 0.3);
+  transform: translateY(-2px);
+}
+
+.person-stats svg {
+  grid-row: span 2;
+  color: #ff4655;
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.person-stats span {
+  color: #7f828c;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+}
+
+.person-stats strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.person-content {
+  max-width: 1250px;
+  margin: auto;
+
+  padding: 70px 28px 120px;
+}
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.person-section {
+  margin-bottom: 70px;
+}
+
+.person-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+}
+
+.person-section-heading span {
+  display: block;
+
+  color: #ff7b86;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+
+  margin-bottom: 8px;
+}
+
+.person-section-heading h2 {
+  margin: 0;
+
+  color: #fff;
+  font-size: 28px;
+  font-weight: 850;
+  letter-spacing: -0.03em;
+}
+
+.person-section-heading > strong {
+  color: #8d919b;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   KNOWN FOR GRID
+========================================================= */
+
+.person-known-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.person-known-card {
+  display: block;
+
+  min-width: 0;
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: transform 0.25s ease;
+}
+
+.person-known-card:hover {
+  transform: translateY(-6px);
+}
+
+.person-known-card img {
+  width: 100%;
+
+  aspect-ratio: 2 / 3;
+
+  display: block;
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #101319;
+
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.person-known-card:hover img {
+  border-color: rgba(255, 70, 85, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 70, 85, 0.1);
+}
+
+.person-known-card > div {
+  padding: 11px 2px 0;
+}
+
+.person-known-card h3 {
+  margin: 0;
+
+  color: #f2f3f5;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.person-known-card span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 6px;
+
+  color: #8d919b;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.person-known-card span svg {
+  color: #ffc542;
+  font-size: 9px;
+}
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.person-tabs {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 22px;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.person-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.person-tabs button {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+
+  padding: 9px 15px;
+
+  background: rgba(255, 255, 255, 0.04);
+  color: #9297a0;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.person-tabs button:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.person-tabs button.active {
+  border-color: transparent;
+  background: linear-gradient(110deg, #e9283c, #ff4655);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(232, 40, 60, 0.25);
+}
+
+.person-tabs button span {
+  min-width: 18px;
+  padding: 1px 5px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  text-align: center;
+}
+
+.person-tabs button.active span {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* =========================================================
+   WORK GRID
+========================================================= */
+
+.person-work-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.person-work-card {
+  display: block;
+
+  min-width: 0;
+
+  padding: 0;
+  border: 0;
+  background: transparent;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: transform 0.25s ease;
+}
+
+.person-work-card:hover {
+  transform: translateY(-6px);
+}
+
+.person-work-image {
+  position: relative;
+
+  aspect-ratio: 2 / 3;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #101319;
+
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.person-work-card:hover .person-work-image {
+  border-color: rgba(255, 70, 85, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 70, 85, 0.1);
+}
+
+.person-work-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.person-work-card:hover .person-work-image img {
+  transform: scale(1.06);
+}
+
+.person-work-image > span {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.75));
+
+  opacity: 0;
+
+  transition: opacity 0.25s ease;
+}
+
+.person-work-card:hover .person-work-image > span {
+  opacity: 1;
+}
+
+.person-work-image > span svg {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 13px;
+
+  border-radius: 50%;
+
+  background: #ff4655;
+  color: white;
+
+  font-size: 14px;
+
+  box-shadow: 0 10px 30px rgba(255, 70, 85, 0.3);
+}
+
+.person-work-info {
+  padding: 11px 2px 0;
+}
+
+.person-work-info h3 {
+  margin: 0;
+
+  color: #f2f3f5;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.person-work-info p {
+  margin: 5px 0 0;
+
+  color: #6f7280;
+  font-size: 11px;
+  font-weight: 650;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.person-work-info > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 6px;
+
+  color: #8d919b;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.person-work-info > span svg {
+  color: #ffc542;
+  font-size: 9px;
+}
+
+/* =========================================================
+   BIOGRAPHY SECTION
+========================================================= */
+
+.person-biography-section {
+  margin-bottom: 70px;
+
+  padding: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+}
+
+.person-biography-section > div span {
+  display: block;
+
+  color: #ff7b86;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+
+  margin-bottom: 8px;
+}
+
+.person-biography-section h2 {
+  margin: 0;
+
+  color: #fff;
+  font-size: 24px;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+}
+
+.person-biography-section p {
+  max-width: 900px;
+  margin: 20px 0 0;
+
+  color: #b3b5bd;
+  font-size: 15px;
+  line-height: 1.85;
+
+  white-space: pre-line;
+}
+
+/* =========================================================
+   AWARDS
+========================================================= */
+
+.person-awards {
+  margin-bottom: 40px;
+}
+
+.person-awards-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-height: 220px;
+
+  padding: 40px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.02);
+
+  text-align: center;
+}
+
+.person-awards-empty svg {
+  color: #ffc542;
+  font-size: 26px;
+}
+
+.person-awards-empty h3 {
+  margin: 0;
+
+  color: #fff;
+  font-size: 17px;
+}
+
+.person-awards-empty p {
+  max-width: 480px;
+  margin: 0;
+
+  color: #7f828c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .person-known-grid,
+  .person-work-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+
+  .person-hero {
+    min-height: auto;
+  }
+
+  .person-hero-grid {
+    grid-template-columns: 190px 1fr;
+    gap: 30px;
+  }
+
+  .person-profile-wrapper {
+    width: 190px;
+  }
+
+  .person-info h1 {
+    font-size: 44px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .person-hero-content {
+    padding: 100px 18px 55px;
+  }
+
+  .person-hero-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .person-profile-wrapper {
+    width: 190px;
+  }
+
+  .person-meta {
+    justify-content: center;
+  }
+
+  .person-biography {
+    -webkit-line-clamp: 4;
+  }
+
+  .person-stats {
+    justify-content: center;
+  }
+
+  .person-stats > div {
+    min-width: 135px;
+    text-align: left;
+  }
+
+  .person-content {
+    padding: 50px 18px 80px;
+  }
+
+  .person-section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .person-known-grid,
+  .person-work-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .person-biography-section {
+    padding: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .person-profile-wrapper,
+  .person-back-button,
+  .person-stats > div,
+  .person-known-card,
+  .person-known-card img,
+  .person-work-card,
+  .person-work-image,
+  .person-work-image img,
+  .person-work-image > span {
+    transition: none;
+  }
+
+  .person-known-card:hover,
+  .person-work-card:hover {
+    transform: none;
+  }
+}

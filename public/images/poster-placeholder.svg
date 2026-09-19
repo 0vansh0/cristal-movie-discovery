@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 750" role="img" aria-label="Poster placeholder">
+  <rect fill="#111827" width="500" height="750"/>
+  <rect x="40" y="52" width="420" height="646" rx="22" fill="#1f2937" stroke="#fbbf24" stroke-width="4" opacity="0.9"/>
+  <circle cx="250" cy="330" r="84" fill="#fbbf24" opacity="0.2"/>
+  <path d="M224 280 L294 330 L224 380 Z" fill="#f9fafb" opacity="0.85"/>
+  <text x="250" y="500" text-anchor="middle" font-size="32" font-family="Arial, sans-serif" fill="#f9fafb" font-weight="700">NO POSTER</text>
+</svg>

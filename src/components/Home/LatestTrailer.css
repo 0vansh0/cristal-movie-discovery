@@ -1,0 +1,495 @@
+/* =========================================================
+   LATEST TRAILERS
+   ========================================================= */
+
+.latest-trailer-section {
+  width: 100%;
+  margin: 28px 0 34px;
+  position: relative;
+}
+
+.latest-trailer-container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 28px;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.latest-trailer-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.latest-trailer-title-group {
+  min-width: 0;
+}
+
+.latest-trailer-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: #ff4655;
+}
+
+.latest-trailer-title-group h2 {
+  margin: 0;
+
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.1;
+  font-weight: 800;
+
+  color: #ffffff;
+}
+
+.latest-trailer-title-group p {
+  margin: 6px 0 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: #858894;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.latest-trailer-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+.latest-trailer-controls button {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #272a31;
+  border-radius: 50%;
+
+  background: #101217;
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.latest-trailer-controls button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #181b21;
+  border-color: #ff4655;
+}
+
+.latest-trailer-controls button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   TRAILER GRID
+   ========================================================= */
+
+.latest-trailer-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   TRAILER CARD
+   ========================================================= */
+
+.latest-trailer-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #20232a;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111319,
+      #0c0e12
+    );
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.latest-trailer-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(
+    255,
+    70,
+    85,
+    0.5
+  );
+
+  box-shadow:
+    0 14px 35px
+      rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================================
+   THUMBNAIL
+   ========================================================= */
+
+.latest-trailer-thumbnail {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  padding: 0;
+  border: 0;
+
+  overflow: hidden;
+
+  background: #17191e;
+
+  cursor: pointer;
+}
+
+.latest-trailer-thumbnail img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+.latest-trailer-card:hover
+.latest-trailer-thumbnail img {
+  transform: scale(1.06);
+  filter: brightness(0.75);
+}
+
+.latest-trailer-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.65),
+      rgba(0, 0, 0, 0.05) 65%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   NEW BADGE
+   ========================================================= */
+
+.latest-trailer-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  background: #ff4655;
+  color: #ffffff;
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   PLAY BUTTON
+   ========================================================= */
+
+.latest-trailer-play {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0.92);
+
+  border-radius: 50%;
+
+  background: rgba(
+    255,
+    70,
+    85,
+    0.95
+  );
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 24px
+      rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.latest-trailer-play svg {
+  margin-left: 2px;
+  font-size: 15px;
+}
+
+.latest-trailer-card:hover
+.latest-trailer-play {
+  transform:
+    translate(-50%, -50%)
+    scale(1.08);
+
+  background: #ff4655;
+}
+
+/* =========================================================
+   INFO
+   ========================================================= */
+
+.latest-trailer-info {
+  padding: 12px 13px 14px;
+  text-align: center;
+}
+
+.latest-trailer-info h3 {
+  margin: 0;
+
+  overflow: hidden;
+
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.35;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: #ffffff;
+}
+
+.latest-trailer-info p {
+  margin: 4px 0 0;
+
+  overflow: hidden;
+
+  font-size: 11px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color: #a7a9b2;
+}
+
+.latest-trailer-meta {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  color: #70737d;
+}
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.latest-trailer-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 17px;
+}
+
+.latest-trailer-progress-track {
+  width: 240px;
+  max-width: 100%;
+  height: 4px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: #282b31;
+}
+
+.latest-trailer-progress-track span {
+  display: block;
+
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #ffffff;
+
+  transition:
+    width 0.35s ease;
+}
+
+.latest-trailer-counter {
+  font-size: 10px;
+  font-weight: 700;
+
+  color: #656873;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.latest-trailer-loading {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+.trailer-skeleton {
+  aspect-ratio: 16 / 9;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #101217 25%,
+      #181b20 50%,
+      #101217 75%
+    );
+
+  background-size: 200% 100%;
+
+  animation:
+    trailerSkeleton 1.4s
+    infinite;
+}
+
+@keyframes trailerSkeleton {
+  from {
+    background-position:
+      200% 0;
+  }
+
+  to {
+    background-position:
+      -200% 0;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .latest-trailer-container {
+    padding: 0 22px;
+  }
+
+  .latest-trailer-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .latest-trailer-loading {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .latest-trailer-header {
+    align-items: flex-start;
+  }
+
+  .latest-trailer-controls {
+    display: none;
+  }
+
+  .latest-trailer-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .latest-trailer-loading {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .latest-trailer-info {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .latest-trailer-container {
+    padding: 0 14px;
+  }
+
+  .latest-trailer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-trailer-loading {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-trailer-title-group h2 {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,315 @@
+/* =========================================================
+   CRISTAL — GLOBAL LIGHT THEME
+   Purple Cinematic Palette
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+
+  /* Helps browser-native controls match light UI */
+  color-scheme: light;
+}
+
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(165, 106, 189, 0.06),
+      transparent 28%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  font-family:
+    "Outfit",
+    sans-serif;
+
+  overflow-x: hidden;
+
+  text-rendering: optimizeLegibility;
+
+  /* Smoother font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+
+  color: inherit;
+}
+
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+#root {
+  min-height: 100vh;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+
+/* =========================================================
+   SCROLLBAR — PURPLE THEME
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      180deg,
+      var(--accent),
+      var(--primary)
+    );
+
+  border-radius: 999px;
+
+  border: 2px solid var(--bg);
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(
+      180deg,
+      var(--secondary-purple),
+      var(--primary)
+    );
+}
+
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--accent)
+    var(--bg);
+}
+
+
+/* =========================================================
+   FOCUS — ACCESSIBLE PURPLE GLOW
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(165, 106, 189, 0.12);
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+::placeholder {
+  color:
+    color-mix(
+      in srgb,
+      var(--text-secondary) 65%,
+      transparent
+    );
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   SMOOTH INTERACTION
+   ========================================================= */
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* =========================================================
+   CRISTAL TRENDING PAGE
+   ========================================================= */
+
+.trending-page {
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(239, 68, 68, 0.035),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 35%,
+      rgba(168, 85, 247, 0.025),
+      transparent 30%
+    ),
+    #07070a;
+}
+
+
+/* =========================================================
+   HORIZONTAL RAIL
+   ========================================================= */
+
+.trending-page [style*="scrollbar-width"]::-webkit-scrollbar {
+  display: none;
+}
+
+.trending-page .overflow-x-auto {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trending-page .overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   MOVIE CARD
+   ========================================================= */
+
+.trending-page img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   SMOOTH INTERACTION
+   ========================================================= */
+
+.trending-page button,
+.trending-page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.trending-page select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.trending-page select option {
+  background: #101014;
+  color: white;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .trending-page {
+    overflow-x: hidden;
+  }
+}

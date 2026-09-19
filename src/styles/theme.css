@@ -1,0 +1,33 @@
+:root,
+html.dark {
+  --bg: #09090b;
+  --surface: #141418;
+  --card: #1c1c22;
+  --primary: #ff5e5e;
+  --primary-hover: #e23c64;
+  --secondary: #ffd464;
+  --accent: #b0183d;
+  --soft: #fcedd8;
+  --text: #ffffff;
+  --text-secondary: #e0e0e8;
+  --muted: #b8b8c4;
+  --border: rgba(255, 255, 255, 0.14);
+  --shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+html.light {
+  /* Coral Wave light theme */
+  --bg: #fcedd8;
+  --surface: #fff8ee;
+  --card: #ffffff;
+  --primary: #ff5e5e;
+  --primary-hover: #e23c64;
+  --secondary: #ffd464;
+  --accent: #b0183d;
+  --soft: #fff1df;
+  --text: #3b1420;
+  --text-secondary: #552d3d;
+  --muted: #744555;
+  --border: rgba(176, 24, 61, 0.22);
+  --shadow: 0 20px 60px rgba(176, 24, 61, 0.14);
+}

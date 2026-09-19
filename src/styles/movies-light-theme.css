@@ -1,0 +1,613 @@
+/* =========================================================
+   CRISTAL — Purple Cinematic Light Theme
+   Deep Purple + Medium Purple + Amethyst + Lavender
+   ========================================================= */
+
+html.light {
+  /* =======================================================
+     BACKGROUNDS
+     ======================================================= */
+
+  --bg: #F5EBFA;                 /* Chalk Violet — main canvas */
+  --surface: #E7DBEF;            /* Lavender White — secondary surfaces */
+  --card: #FFFFFF;               /* Clean white cards */
+  --border: #E7DBEF;             /* Soft lavender borders */
+
+
+  /* =======================================================
+     BRAND / PRIMARY COLORS
+     ======================================================= */
+
+  --primary: #49225B;            /* Deep Purple — main brand */
+  --primary-hover: #6E3482;      /* Medium Purple — hover */
+
+  --soft: #E7DBEF;               /* Lavender White — active backgrounds */
+  --accent: #A56ABD;             /* Amethyst — highlights */
+
+
+  /* =======================================================
+     TEXT
+     ======================================================= */
+
+  --text: #49225B;               /* Deep Purple headings */
+  --text-secondary: #6E3482;     /* Medium Purple metadata */
+
+
+  /* =======================================================
+     SHADOW
+     ======================================================= */
+
+  --shadow:
+    0 8px 28px -12px rgba(73, 34, 91, 0.18);
+}
+
+
+/* =========================================================
+   MAIN MOVIES PAGE
+   ========================================================= */
+
+html.light .cristal-page {
+  background:
+    radial-gradient(
+      circle at 78% 8%,
+      rgba(165, 106, 189, 0.18) 0,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 10% 60%,
+      rgba(110, 52, 130, 0.07) 0,
+      transparent 30%
+    ),
+    var(--bg);
+
+  color: var(--text);
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+html.light :is(
+  .quick-category,
+  .top-feature-card,
+  .top-mini-card,
+  .country-picker,
+  .movie-tabs button,
+  .compact-movie,
+  .mood-tile,
+  .trailer-card,
+  .news-grid article,
+  .decision-engine,
+  .vibe-rec-card
+) {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+html.light :is(
+  .quick-category:hover,
+  .quick-category.is-active,
+  .top-feature-card:hover,
+  .compact-movie:hover,
+  .mood-tile:hover,
+  .trailer-card:hover,
+  .news-grid article:hover,
+  .vibe-rec-card:hover
+) {
+  background: var(--soft);
+  border-color: var(--accent);
+}
+
+
+/* =========================================================
+   SECONDARY TEXT
+   ========================================================= */
+
+html.light :is(
+  .hero-description,
+  .quick-text small,
+  .top-ten-heading button,
+  .top-feature-meta,
+  .top-feature-rating span,
+  .top-feature-overview,
+  .movie-status,
+  .movie-meta,
+  .heading-note,
+  .person-card small,
+  .editorial-grid p,
+  .news-grid p,
+  .vibe-description,
+  .decision-controls label,
+  .tone-switch,
+  .vibe-rec-card p,
+  .context-heading p,
+  .vibe-loading
+) {
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   SMALL BRAND LABELS
+   ========================================================= */
+
+html.light :is(
+  .hero-label,
+  .top-ten-heading p,
+  .discover-heading p,
+  .extras-heading p,
+  .compact-movie p,
+  .trailer-card small,
+  .news-grid span,
+  .news-grid small,
+  .decision-title p,
+  .vibe-copy > p:first-child,
+  .vibe-rec-card span,
+  .context-heading > span,
+  .top-feature-rating
+) {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   MAIN HEADINGS
+   ========================================================= */
+
+html.light :is(
+  .hero-copy h1,
+  .top-ten-heading h2,
+  .discover-heading h2,
+  .extras-heading h2,
+  .top-feature-title,
+  .top-mini-card,
+  .movie-card,
+  .movie-title,
+  .vibe-copy h1,
+  .decision-title h2,
+  .context-heading h3,
+  .vibe-rec-card
+) {
+  color: var(--text);
+}
+
+
+/* =========================================================
+   TITLE HIGHLIGHTS
+   ========================================================= */
+
+html.light :is(
+  .hero-copy h1 span,
+  .extras-heading h2 span,
+  .top-ten-heading h2 span,
+  .movie-title:hover,
+  .top-feature-title:hover,
+  .top-feature-link:hover
+) {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   PRIMARY BUTTONS
+   ========================================================= */
+
+html.light .btn-primary,
+html.light .navbar-login {
+  background: linear-gradient(
+    115deg,
+    var(--primary),
+    var(--primary-hover)
+  );
+
+  color: #FFFFFF;
+  border-color: transparent;
+
+  box-shadow:
+    0 6px 18px rgba(73, 34, 91, 0.22);
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON HOVER
+   ========================================================= */
+
+html.light :is(
+  .btn-primary:hover,
+  .navbar-login:hover
+) {
+  background: var(--primary-hover);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTONS
+   ========================================================= */
+
+html.light :is(
+  .btn-secondary,
+  .vibe-pills button,
+  .platform-pills button
+) {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #111827;
+}
+
+html.light .btn-secondary:hover {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.18);
+}
+
+
+/* =========================================================
+   ACTIVE TABS
+   ========================================================= */
+
+html.light :is(
+  .movie-tabs button.is-active,
+  .platform-pills button.is-active
+) {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+
+  box-shadow:
+    0 5px 15px rgba(73, 34, 91, 0.20);
+}
+
+
+/* =========================================================
+   VIBE HERO
+   ========================================================= */
+
+html.light .vibe-hero {
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #E7DBEF 100%
+    );
+
+  border-color: var(--border);
+}
+
+
+/* =========================================================
+   VIBE IMAGE SHADE
+   ========================================================= */
+
+html.light .vibe-shade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(245, 235, 250, 0.98) 0%,
+      rgba(245, 235, 250, 0.90) 35%,
+      rgba(245, 235, 250, 0.20) 76%
+    ),
+    linear-gradient(
+      0deg,
+      var(--bg),
+      transparent 60%
+    );
+}
+
+
+/* =========================================================
+   MOVIE POSTER WRAPPER
+   ========================================================= */
+
+html.light .movie-poster-wrapper {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   POSTER LOADER
+   ========================================================= */
+
+html.light .movie-poster-loader {
+  background:
+    linear-gradient(
+      135deg,
+      #E7DBEF,
+      #F5EBFA
+    );
+}
+
+
+/* =========================================================
+   LOADING SPINNERS
+   ========================================================= */
+
+html.light .movie-poster-loader span,
+html.light .spinner,
+html.light .extras-loading span {
+  border-color: rgba(165, 106, 189, 0.18);
+  border-top-color: var(--accent);
+}
+
+
+/* =========================================================
+   MOVIE BADGES / ACTION BUTTONS
+   ========================================================= */
+
+html.light .movie-rating,
+html.light .movie-type,
+html.light .movie-action-button {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--primary);
+  border-color: var(--border);
+}
+
+
+/* =========================================================
+   RATING / WATCHLIST
+   ========================================================= */
+
+html.light .movie-rating,
+html.light .movie-action-button.is-watchlisted {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   ACTION BUTTON HOVER
+   ========================================================= */
+
+html.light .movie-action-button:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+
+/* =========================================================
+   EDITORIAL SECTION
+   ========================================================= */
+
+html.light .editorial-section {
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #E7DBEF 100%
+    );
+
+  border-color: var(--border);
+}
+
+
+html.light .editorial-grid article {
+  border-color: var(--accent);
+}
+
+
+/* =========================================================
+   COUNTRY PICKER
+   ========================================================= */
+
+html.light .country-picker select,
+html.light .country-picker option {
+  background: var(--card);
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   GOLD/COLOR ACCENT ELEMENTS
+   ========================================================= */
+
+html.light :is(
+  .rating-star,
+  .favorite-icon,
+  .movie-rating strong,
+  .gold-accent
+) {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   INPUTS / SEARCH
+   ========================================================= */
+
+html.light :is(
+  input,
+  textarea,
+  select
+) {
+  background: #FFFFFF;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+
+html.light :is(
+  input:focus,
+  textarea:focus,
+  select:focus
+) {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px rgba(165, 106, 189, 0.12);
+}
+
+
+/* =========================================================
+   FOCUS STATES
+   ========================================================= */
+
+html.light :is(
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible
+) {
+  outline: 2px solid rgba(165, 106, 189, 0.45);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   DARK MODE — restore dark surfaces after the light styles above
+   ========================================================= */
+html.dark .cristal-page {
+  background: radial-gradient(circle at 76% 12%, rgba(176, 24, 61, .16) 0, transparent 30%), var(--bg);
+  color: var(--text);
+}
+
+html.dark :is(
+  .quick-category,
+  .top-feature-card,
+  .top-mini-card,
+  .country-picker,
+  .movie-tabs button,
+  .compact-movie,
+  .mood-tile,
+  .trailer-card,
+  .news-grid article,
+  .decision-engine,
+  .vibe-rec-card
+) {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--text);
+  box-shadow: none;
+}
+
+html.dark :is(
+  .quick-category:hover,
+  .quick-category.is-active,
+  .top-feature-card:hover,
+  .compact-movie:hover,
+  .mood-tile:hover,
+  .trailer-card:hover,
+  .news-grid article:hover,
+  .vibe-rec-card:hover
+) {
+  background: var(--surface);
+  border-color: var(--primary);
+}
+
+html.dark :is(
+  .quick-text strong,
+  .top-feature-title,
+  .top-mini-title,
+  .movie-title,
+  .context-heading h3,
+  .extras-heading h2,
+  .top-ten-heading h2,
+  .discover-heading h2,
+  .vibe-rec-card strong
+) { color: var(--text); }
+
+html.dark :is(
+  .quick-text small,
+  .top-ten-heading button,
+  .top-feature-meta,
+  .top-feature-rating span,
+  .top-feature-overview,
+  .movie-meta,
+  .heading-note,
+  .vibe-rec-card p,
+  .context-heading p
+) { color: var(--text-secondary); }
+
+html.dark :is(
+  .quick-icon,
+  .country-picker select,
+  .country-picker option
+) { background: var(--surface); color: var(--text); }
+
+html.dark .top-feature-poster { background: var(--surface); }
+html.dark .top-feature-link { color: var(--primary); }
+html.dark .top-feature-rating { color: var(--secondary); }
+html.dark .movie-tabs button.is-active { background: var(--primary); color: #fff; }
+
+/* Entry point for the interactive AI Movie Match page. */
+.watch-tonight-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 8px 0 30px;
+  padding: 24px 28px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: radial-gradient(circle at 87% 45%, color-mix(in srgb, var(--secondary) 30%, transparent), transparent 24%), linear-gradient(120deg, color-mix(in srgb, var(--primary) 11%, var(--card)), var(--card));
+}
+.watch-tonight-cta span { color: var(--primary); font-size: 11px; font-weight: 900; letter-spacing: .14em; }
+.watch-tonight-cta h2 { margin: 7px 0; color: var(--text); font-size: 24px; letter-spacing: -.035em; }
+.watch-tonight-cta p { margin: 0; color: var(--text-secondary); font-size: 13px; }
+.watch-tonight-cta-button { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 10px; border-radius: 999px; padding: 13px 19px; background: var(--primary); color: #fff; font-size: 13px; font-weight: 850; text-decoration: none; box-shadow: 0 10px 22px color-mix(in srgb, var(--primary) 26%, transparent); transition: transform .2s, background .2s; }
+.watch-tonight-cta-button:hover { background: var(--primary-hover); transform: translateY(-2px); }
+.watch-tonight-cta-button span { color: #fff; font-size: 17px; letter-spacing: 0; }
+@media (max-width: 620px) { .watch-tonight-cta { align-items: flex-start; flex-direction: column; padding: 22px; }.watch-tonight-cta h2 { font-size: 21px; } }
+
+/* Cinematic hero motion: slow background drift and a staggered text reveal. */
+.cristal-hero {
+  isolation: isolate;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--primary) 12%, var(--bg)), var(--bg));
+}
+.cristal-hero::before, .cristal-hero::after {
+  position: absolute;
+  z-index: 0;
+  width: 52vw;
+  height: 52vw;
+  min-width: 560px;
+  min-height: 560px;
+  border-radius: 45% 55% 60% 40% / 45% 48% 52% 55%;
+  content: "";
+  filter: blur(54px);
+  opacity: .25;
+  pointer-events: none;
+  animation: hero-ambient-wave 18s ease-in-out infinite alternate;
+}
+.cristal-hero::before { top: -78%; left: -13%; background: var(--primary); }
+.cristal-hero::after { right: -17%; bottom: -115%; background: var(--secondary); animation-delay: -9s; }
+.hero-copy { animation: hero-copy-in .8s cubic-bezier(.2,.8,.2,1) both; }
+.hero-label { animation: hero-copy-in .55s .05s both; }
+.hero-copy h1 { animation: hero-copy-in .7s .14s both; }
+.hero-description { animation: hero-copy-in .7s .25s both; }
+.hero-actions { animation: hero-copy-in .7s .36s both; }
+.hero-copy h1 span { display: inline-block; animation: hero-text-glow 3.6s ease-in-out infinite; }
+.hero-collage { animation: hero-collage-float 15s ease-in-out infinite alternate; }
+@keyframes hero-ambient-wave { from { transform: translate3d(-4%, -3%, 0) rotate(-8deg) scale(1); } to { transform: translate3d(9%, 7%, 0) rotate(11deg) scale(1.12); } }
+@keyframes hero-copy-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes hero-text-glow { 0%,100% { filter: drop-shadow(0 0 0 transparent); transform: translateY(0); } 50% { filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--primary) 34%, transparent)); transform: translateY(-2px); } }
+@keyframes hero-collage-float { from { transform: rotate(8deg) translate3d(0, 0, 0) scale(1); } to { transform: rotate(11deg) translate3d(-20px, 13px, 0) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .cristal-hero::before, .cristal-hero::after, .hero-copy, .hero-label, .hero-copy h1, .hero-description, .hero-actions, .hero-copy h1 span, .hero-collage { animation: none; } }
+
+/* Cozy page-wide waves, kept behind all movie content. */
+.cristal-page { position: relative; isolation: isolate; }
+.cristal-page::before, .cristal-page::after {
+  position: absolute;
+  z-index: 0;
+  width: 75vw;
+  height: 52vw;
+  min-width: 700px;
+  min-height: 460px;
+  border-radius: 48% 52% 42% 58% / 55% 43% 57% 45%;
+  content: "";
+  filter: blur(70px);
+  opacity: .10;
+  pointer-events: none;
+  animation: page-cozy-wave 22s ease-in-out infinite alternate;
+}
+.cristal-page::before { top: 25%; left: -42%; background: var(--primary); }
+.cristal-page::after { right: -45%; bottom: 8%; background: var(--secondary); animation-delay: -11s; }
+.cristal-page > * { position: relative; z-index: 1; }
+@keyframes page-cozy-wave { from { transform: translate3d(-5%, -3%, 0) rotate(-9deg) scale(1); } to { transform: translate3d(10%, 8%, 0) rotate(10deg) scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { .cristal-page::before, .cristal-page::after { animation: none; } }

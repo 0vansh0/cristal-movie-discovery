@@ -1,0 +1,909 @@
+/* =========================================================
+   PERSON HERO
+   CRISTAL — Premium Cinema / Minimal Dark UI
+   (re-themed to match MoviesPage.css)
+========================================================= */
+
+.person-hero {
+  --person-bg: #080a0d;
+  --person-surface: rgba(255, 255, 255, 0.045);
+  --person-border: rgba(255, 255, 255, 0.09);
+  --person-border-hover: rgba(255, 255, 255, 0.18);
+  --person-text: #f7f7f8;
+  --person-muted: #a4a8b1;
+  --person-dim: #737780;
+  --person-accent: #ff4655;
+  --person-accent-2: #e9283c;
+  --person-accent-soft: rgba(255, 70, 85, 0.12);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 600px;
+  overflow: hidden;
+
+  background: var(--person-bg);
+  color: var(--person-text);
+  border-bottom: 1px solid var(--person-border);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.person-hero-bg {
+  position: absolute;
+  inset: -40px;
+  z-index: -3;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  filter: blur(28px) saturate(0.9);
+  transform: scale(1.08);
+  opacity: 0.3;
+  transition: opacity 0.35s ease;
+}
+
+.person-hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(255, 70, 85, 0.18),
+      transparent 35%
+    ),
+    rgba(8, 10, 13, 0.55);
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.person-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  background:
+    linear-gradient(
+      90deg,
+      #080a0d 0%,
+      rgba(8, 10, 13, 0.95) 28%,
+      rgba(8, 10, 13, 0.82) 62%,
+      rgba(8, 10, 13, 0.68) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #080a0d 0%,
+      transparent 55%
+    );
+}
+
+/* =========================================================
+   HERO CONTAINER
+========================================================= */
+
+.person-hero-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1280px, calc(100% - 48px));
+
+  margin: 0 auto;
+
+  padding:
+    110px 0
+    75px;
+}
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.person-hero-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 48px;
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--person-border);
+  border-radius: 999px;
+
+  background: var(--person-surface);
+
+  color: var(--person-muted);
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(16px);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.person-hero-back:hover {
+  background: rgba(255, 255, 255, 0.09);
+
+  border-color: var(--person-border-hover);
+
+  color: #fff;
+
+  transform: translateX(-3px);
+}
+
+.person-hero-back:focus-visible {
+  outline: 3px solid rgba(255, 70, 85, 0.45);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   HERO GRID
+========================================================= */
+
+.person-hero-grid {
+  display: grid;
+
+  grid-template-columns:
+    240px
+    minmax(0, 1fr);
+
+  align-items: start;
+
+  gap: 50px;
+}
+
+/* =========================================================
+   PROFILE IMAGE + CAROUSEL
+========================================================= */
+
+.person-profile-wrapper {
+  width: 240px;
+  margin-top: 2px;
+}
+
+.person-profile {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 2 / 3;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  border: 1px solid var(--person-border);
+
+  background: #101319;
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.55),
+    0 10px 30px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.person-profile:hover {
+  border-color: rgba(255, 70, 85, 0.35);
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.65),
+    0 15px 40px rgba(255, 70, 85, 0.1);
+}
+
+.person-profile img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.5s ease;
+}
+
+.person-profile-image {
+  background: #101319;
+}
+
+.person-profile:hover img {
+  transform: scale(1.035);
+}
+
+.person-profile::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(0, 0, 0, 0.35)
+    );
+}
+
+/* Carousel nav arrows — sit above the ::after shade */
+
+.person-profile-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  transform: translateY(-50%);
+
+  border: 1px solid var(--person-border);
+  border-radius: 50%;
+
+  background: rgba(8, 10, 13, 0.65);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.person-profile:hover .person-profile-nav,
+.person-profile:focus-within .person-profile-nav {
+  opacity: 1;
+}
+
+.person-profile-nav:hover {
+  border-color: var(--person-accent);
+
+  background: rgba(255, 70, 85, 0.18);
+
+  transform: translateY(-50%) scale(1.06);
+}
+
+.person-profile-nav:focus-visible {
+  opacity: 1;
+
+  outline: 2px solid rgba(255, 70, 85, 0.5);
+  outline-offset: 2px;
+}
+
+.person-profile-nav-prev {
+  left: 8px;
+}
+
+.person-profile-nav-next {
+  right: 8px;
+}
+
+.person-profile-dots {
+  position: absolute;
+  z-index: 2;
+  bottom: 12px;
+  left: 50%;
+
+  display: flex;
+
+  gap: 5px;
+
+  transform: translateX(-50%);
+}
+
+.person-profile-dots button {
+  width: 5px;
+  height: 5px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.person-profile-dots button.is-active {
+  width: 18px;
+
+  background: var(--person-accent);
+}
+
+/* =========================================================
+   HERO INFO
+========================================================= */
+
+.person-hero-info {
+  min-width: 0;
+}
+
+/* =========================================================
+   KICKER
+========================================================= */
+
+.person-hero-kicker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-bottom: 15px;
+}
+
+.person-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 70, 85, 0.28);
+
+  border-radius: 999px;
+
+  background: var(--person-accent-soft);
+
+  color: #ff8890;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.person-popularity {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  color: var(--person-muted);
+
+  font-size: 12px;
+}
+
+.person-popularity svg {
+  color: #ffbd38;
+}
+
+/* =========================================================
+   NAME + ACTIONS ROW
+========================================================= */
+
+.person-hero-title-row {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+}
+
+.person-hero-title {
+  max-width: 950px;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: clamp(
+    44px,
+    6vw,
+    72px
+  );
+
+  font-weight: 950;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+
+  text-transform: uppercase;
+
+  text-wrap: balance;
+}
+
+.person-hero-actions {
+  display: flex;
+  flex-shrink: 0;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.person-favorite-button,
+.person-share-button {
+  display: inline-flex;
+
+  min-height: 40px;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--person-border);
+  border-radius: 999px;
+
+  background: var(--person-surface);
+
+  color: var(--person-muted);
+
+  font-size: 12px;
+  font-weight: 850;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.person-favorite-button:hover,
+.person-share-button:hover {
+  border-color: rgba(255, 70, 85, 0.45);
+
+  background: rgba(255, 70, 85, 0.1);
+
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+.person-share-button:hover {
+  box-shadow: 0 10px 25px rgba(255, 70, 85, 0.12);
+}
+
+.person-favorite-button:focus-visible,
+.person-share-button:focus-visible {
+  outline: 3px solid rgba(255, 70, 85, 0.45);
+  outline-offset: 3px;
+}
+
+.person-favorite-button.is-saved {
+  border-color: rgba(255, 70, 85, 0.55);
+
+  background: rgba(255, 70, 85, 0.16);
+
+  color: var(--person-accent);
+}
+
+.person-favorite-button.is-saved:hover {
+  background: rgba(255, 70, 85, 0.22);
+}
+
+/* =========================================================
+   ALIASES
+========================================================= */
+
+.person-aliases {
+  margin-top: 20px;
+}
+
+.person-aliases-label {
+  margin-bottom: 8px;
+
+  color: var(--person-dim);
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.person-alias-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.person-alias {
+  max-width: 240px;
+
+  overflow: hidden;
+
+  padding: 6px 10px;
+
+  border: 1px solid var(--person-border);
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--person-muted);
+
+  font-size: 11px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.person-hero-stats {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 30px;
+}
+
+.person-hero-stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 58px;
+
+  max-width: 300px;
+
+  padding:
+    10px 13px;
+
+  border: 1px solid var(--person-border);
+
+  border-radius: 12px;
+
+  background: var(--person-surface);
+
+  backdrop-filter: blur(18px);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.person-hero-stat:hover {
+  background: rgba(255, 255, 255, 0.065);
+
+  border-color: var(--person-border-hover);
+
+  transform: translateY(-2px);
+}
+
+.person-hero-stat-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 9px;
+
+  background: var(--person-accent-soft);
+
+  color: var(--person-accent);
+}
+
+.person-hero-stat-content {
+  min-width: 0;
+}
+
+.person-hero-stat-label {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #60636d;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+}
+
+.person-hero-stat-value {
+  display: block;
+
+  max-width: 220px;
+
+  overflow: hidden;
+
+  color: #e3e4e8;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.person-hero-stat-wide {
+  max-width: min(100%, 420px);
+}
+
+.person-hero-stat:focus-within {
+  border-color: rgba(255, 70, 85, 0.35);
+}
+
+/* =========================================================
+   BOTTOM FADE
+========================================================= */
+
+.person-hero-bottom-fade {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: 160px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #080a0d
+    );
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .person-hero {
+    min-height: auto;
+  }
+
+  .person-hero-container {
+    width: min(720px, calc(100% - 48px));
+
+    padding:
+      100px 0
+      60px;
+  }
+
+  .person-hero-grid {
+    grid-template-columns:
+      190px
+      minmax(0, 1fr);
+
+    gap: 30px;
+  }
+
+  .person-profile-wrapper {
+    width: 190px;
+    margin-top: 0;
+  }
+
+  .person-hero-title {
+    font-size: 48px;
+  }
+
+  .person-hero-stats {
+    margin-top: 24px;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .person-hero-container {
+    width: calc(100% - 48px);
+
+    padding: 86px 0 54px;
+  }
+
+  .person-hero-back {
+    margin-bottom: 35px;
+  }
+
+  .person-hero-grid {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+
+    text-align: center;
+  }
+
+  .person-profile-wrapper {
+    width: 175px;
+
+    margin: 0 auto;
+  }
+
+  /* Touch devices have no hover — keep carousel controls visible */
+  .person-profile-nav {
+    opacity: 1;
+  }
+
+  .person-hero-kicker {
+    justify-content: center;
+  }
+
+  .person-hero-title-row {
+    justify-content: center;
+
+    text-align: center;
+  }
+
+  .person-hero-actions {
+    justify-content: center;
+
+    width: 100%;
+
+    margin-top: 4px;
+  }
+
+  .person-hero-title {
+    font-size: clamp(
+      38px,
+      12vw,
+      52px
+    );
+
+    line-height: 1;
+    letter-spacing: -0.03em;
+    overflow-wrap: anywhere;
+  }
+
+  .person-aliases {
+    margin-top: 18px;
+  }
+
+  .person-alias-list {
+    justify-content: center;
+  }
+
+  .person-hero-stats {
+    justify-content: center;
+
+    text-align: left;
+  }
+
+  .person-hero-stat {
+    max-width: 100%;
+    width: min(100%, 360px);
+  }
+
+  .person-popularity {
+    justify-content: center;
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .person-hero-container {
+    width: calc(100% - 48px);
+
+    padding-top: 80px;
+  }
+
+  .person-profile-wrapper {
+    width: 155px;
+  }
+
+  .person-hero-title {
+    font-size: 36px;
+  }
+
+  .person-hero-actions {
+    gap: 6px;
+  }
+
+  .person-favorite-button,
+  .person-share-button {
+    min-height: 36px;
+
+    padding: 0 12px;
+
+    font-size: 11px;
+  }
+
+  .person-hero-stats {
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
+  .person-hero-stat {
+    width: 100%;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .person-hero-back,
+  .person-profile,
+  .person-profile img,
+  .person-profile-nav,
+  .person-favorite-button,
+  .person-share-button,
+  .person-hero-stat,
+  .person-hero-bg {
+    transition: none;
+  }
+
+  .person-hero-back:hover,
+  .person-profile:hover,
+  .person-profile-nav:hover,
+  .person-favorite-button:hover,
+  .person-share-button:hover,
+  .person-hero-stat:hover {
+    transform: none;
+  }
+}
