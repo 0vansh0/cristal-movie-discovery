@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import GenreButton from "../components/GenreButton";
-import MovieCard from "../components/movie/MovieCard";
+import MovieCard from "../components/Movie/MovieCard";
 import { useGenreFilter } from "../hooks/useGenreFilter";
 
 const pageVariants = {
