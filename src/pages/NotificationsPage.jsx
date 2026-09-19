@@ -10,7 +10,7 @@ import {
   Trash2,
   Tv,
 } from "lucide-react";
-import Footer from "../components/Layout/Footer";
+import Footer from "../components/layout/Footer";
 import "./NotificationsPage.css";
 
 const INITIAL_NOTIFICATIONS = [
