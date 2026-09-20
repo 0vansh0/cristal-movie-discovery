@@ -121,15 +121,15 @@ const technologies = [
    ========================================================= */
 
 const openCristal = () => {
-  window.location.assign("/");
+  window.location.assign("./movies");
 };
 
 const openCristalAI = () => {
-  window.location.assign("/ai");
+  window.location.assign("./AIPage");
 };
 
 const openMovies = () => {
-  window.location.assign("/movies");
+  window.location.assign("./MoviesPage");
 };
 
 const scrollToExperience = () => {
