@@ -16,6 +16,7 @@ import {
 import Navbar from "../components/about/Navbar";
 import ScrollProgress from "../components/about/ScrollProgress";
 import Footer from "../components/about/Footer";
+import { useNavigate } from "react-router-dom";
 
 import "./AboutCristalPage.css";
 
@@ -120,10 +121,6 @@ const technologies = [
    NAVIGATION
    ========================================================= */
 
-const openCristal = () => {
-  window.location.assign("/movies");
-};
-
 const openCristalAI = () => {
   window.location.assign("./AIPage");
 };
@@ -146,6 +143,12 @@ const scrollToExperience = () => {
    ========================================================= */
 
 export default function AboutCristalPage() {
+  const navigate = useNavigate();
+
+  const openCristal = () => {
+    navigate("/movies");
+  };
+
   return (
     <div className="about-page">
       <ScrollProgress />
@@ -189,8 +192,9 @@ export default function AboutCristalPage() {
               <div className="about-hero-actions">
                 <button
                   type="button"
-                  className="about-pill about-pill-primary"
                   Link to="/movies"
+                  className="about-pill about-pill-primary"
+                  
                   onClick={openCristal}
                 >   
                   <Play
