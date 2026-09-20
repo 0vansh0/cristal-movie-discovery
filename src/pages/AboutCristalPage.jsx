@@ -121,7 +121,7 @@ const technologies = [
    ========================================================= */
 
 const openCristal = () => {
-  window.location.assign("./movies");
+  window.location.assign("/movies");
 };
 
 const openCristalAI = () => {
