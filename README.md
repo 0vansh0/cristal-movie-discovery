@@ -42,7 +42,7 @@ The goal was not only to display movie data, but to build an interface that feel
 
 ### Movie Details
 
-![Movie Details](./screenshot/Movie-details.png)
+![Movie Details](./screenshot/Movie_details.png)
 
 ### TV Shows
 
