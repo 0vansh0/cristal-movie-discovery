@@ -16,7 +16,7 @@ import {
 import { FaGoogle } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { registerUser } from "../services/userService";
-import Footer from "../components/Layout/Footer";
+import Footer from "../components/layout/Footer";
 import "./Signup.css";
 
 const MAX_AVATAR_SIZE = 5 * 1024 * 1024;

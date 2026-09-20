@@ -9,15 +9,15 @@ import {
 
 
 
-import Navbar from "./Navbar";
+import Navbar from "../layout/Navbar";
 
-import Sidebar from "./Sidebar";
+import Sidebar from "../layout/Sidebar";
 
-import Footer from "./Footer";
+import Footer from "../layout/Footer";
 
 
 
-import "./MainLayout.css";
+import "../layout/MainLayout.css";
 
 
 
