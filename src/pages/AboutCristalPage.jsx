@@ -190,8 +190,9 @@ export default function AboutCristalPage() {
                 <button
                   type="button"
                   className="about-pill about-pill-primary"
+                  Link to="/movies"
                   onClick={openCristal}
-                >
+                >   
                   <Play
                     size={15}
                     fill="currentColor"
